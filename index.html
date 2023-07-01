@@ -496,7 +496,7 @@
 <div id="all">
     <div class="wrapper">
         <div class="main">
-            <h1>地址发布页</h1>
+            <h1>EasyGPT地址发布页</h1>
             <div class="content">
                 <div class="content-top">
                     <h2>请 Ctrl+D 收藏本页到浏览器收藏夹</h2>
@@ -579,7 +579,11 @@
                 console.log(`The latency for ${site.url} is ${delay} milliseconds.`);
             }
             const span = document.getElementById(`site-span-${site.id}`)
-            span.innerHTML = `${parseInt(delay)} ms`
+            if(delay===`unreachable`){
+                span.innerHTML = delay
+            }else {
+                span.innerHTML = `${parseInt(delay)} ms`
+            }
         });
         li.innerHTML = `${site.title}
                             <a href="${site.url}" target="_blank"><i>${site.url}</i></a>
