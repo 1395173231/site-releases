@@ -540,7 +540,7 @@
             delay = end - start;
         } catch (error) {
             console.error(`Error fetching ${url}: ${error}`);
-            delay = 'unreachable';
+            delay = '延迟检测不可用,请手动尝试';
         }
 
         return delay;
@@ -551,6 +551,11 @@
 
     const sites = [
         {
+            id: 3,
+            title: "EasyGPT-轻松使用GPT (cloudflare优选)",
+            url: "https://free-cf.easychat.work"
+        },
+        {
             id: 0,
             title: "EasyGPT-轻松使用GPT",
             url: "https://chat5.fastgpt.me"
@@ -559,11 +564,6 @@
             id: 2,
             title: "EasyGPT-轻松使用GPT",
             url: "https://chat6.fastgpt.me"
-        },
-        {
-            id: 3,
-            title: "EasyGPT-轻松使用GPT (cloudflare)",
-            url: "https://free-cf.easychat.work"
         },
         {
             id: 1,
