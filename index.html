@@ -584,10 +584,10 @@
             }
             const span = document.getElementById(`site-span-${site.id}`)
             if(delay===`unreachable`){
-                span.innerHTML = delay
-            }else {
-                // span.innerHTML = `${parseInt(delay)} ms`
+                // span.innerHTML = delay
                 span.innerHTML = `延迟检测不可用,请尝试手动验证`
+            }else {
+                span.innerHTML = `${parseInt(delay)} ms`
             }
         });
         li.innerHTML = `${site.title}
