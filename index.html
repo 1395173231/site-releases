@@ -540,7 +540,7 @@
             delay = end - start;
         } catch (error) {
             console.error(`Error fetching ${url}: ${error}`);
-            delay = '延迟检测不可用,请手动尝试';
+            delay = 'unreachable';
         }
 
         return delay;
@@ -586,7 +586,8 @@
             if(delay===`unreachable`){
                 span.innerHTML = delay
             }else {
-                span.innerHTML = `${parseInt(delay)} ms`
+                // span.innerHTML = `${parseInt(delay)} ms`
+                span.innerHTML = `延迟检测不可用,请尝试手动验证`
             }
         });
         li.innerHTML = `${site.title}
