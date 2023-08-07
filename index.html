@@ -491,6 +491,17 @@
             height: auto;
         }
     }</style>
+
+
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?563fb31e93813a8a7094966df6671d3f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
 <div id="all">
@@ -583,10 +594,10 @@
                 console.log(`The latency for ${site.url} is ${delay} milliseconds.`);
             }
             const span = document.getElementById(`site-span-${site.id}`)
-            if(delay===`unreachable`){
+            if (delay === `unreachable`) {
                 // span.innerHTML = delay
                 // span.innerHTML = `延迟检测不可用,请尝试手动验证`
-            }else {
+            } else {
                 span.innerHTML = `${parseInt(delay)} ms`
             }
         });
