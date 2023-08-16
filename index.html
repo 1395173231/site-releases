@@ -562,6 +562,19 @@
 </script>
 
 <script>
+
+    function generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            result += characters.charAt(randomIndex);
+        }
+
+        return result;
+    }
+
     const sites = [
         {
             id: 1,
@@ -577,11 +590,17 @@
             id: 0,
             title: "EasyGPT-轻松使用GPT (vercel)",
             url: "https://chat9.fastgpt.me"
+        },
+        {
+            id:99,
+            title: "EasyGPT-轻松使用GPT (vercel)",
+            url: `https://${generateRandomString(10)}.fastgpt.me`
         }
     ]
 
     const ul = document.getElementById("site-ul")
     ul.innerHTML = ""
+
     for (let site of sites) {
         var li = document.createElement('li');
         checkLatency(site.url).then(delay => {
