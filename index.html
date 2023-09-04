@@ -577,9 +577,19 @@
 
     const sites = [
         {
+            id: 0,
+            title: "EasyGPT-轻松使用GPT (非中国地区可用,github google登录请使用此地址)",
+            url: "https://chat.eqing.tech/#/login"
+        },
+        {
+            id:99,
+            title: "EasyGPT-轻松使用GPT (随机网址,每次打开都不同,需要自己保存地址,不然聊天记录会丢失)",
+            url: `https://${generateRandomString(10)}.fastgpt.me`
+        },
+        {
             id: 1,
-            title: "EasyGPT-轻松使用GPT (亚洲cdn,高速,尽量登录后使用)",
-            url: "https://chat1.eqing.tech/#/login"
+            title: "EasyGPT-轻松使用GPT",
+            url: "https://origin.eqing.tech/#/login"
         },
         {
             id: 4,
@@ -588,13 +598,8 @@
         },
         {
             id: 0,
-            title: "EasyGPT-轻松使用GPT (被墙)",
+            title: "EasyGPT-轻松使用GPT (非中国地区可用)",
             url: "https://chat9.fastgpt.me"
-        },
-        {
-            id:99,
-            title: "EasyGPT-轻松使用GPT (vercel)",
-            url: `https://${generateRandomString(10)}.fastgpt.me`
         }
     ]
 
