@@ -611,12 +611,12 @@
         {
             id: 2,
             title: "EasyGPT (亚洲cdn加速, cdn流量不足, 已指向美国CN2线路)",
-            url: `https://chat3.eqing.tech/`
+            url: `https://chat3.eqing.tech/#/`
         },
         {
             id: 99,
             title: "EasyGPT (非中国地区可用,随机网址,每次打开都不同,需要自己保存地址,不然聊天记录会丢失)",
-            url: `https://${generateRandomString(10)}.fastgpt.me`
+            url: `https://${generateRandomString(10)}.fastgpt.me/#/`
         },
     ]
 
@@ -640,7 +640,7 @@
             }
         });
         li.innerHTML = `${site.title}
-                            <a href="${site.url}" target="_blank"><i>${site.url}</i></a>
+                            <a href="${site.url}" target="_blank"><i>${site.url.split("/#/")[0]}</i></a>
                             <span id="site-span-${site.id}"></span>`;
         ul.appendChild(li);
     }
