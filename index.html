@@ -495,7 +495,7 @@
 
     <script type="text/javascript">
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?2ecf5edae6f9febf4b9e934d4c1220da";
             var s = document.getElementsByTagName("script")[0];
@@ -512,21 +512,24 @@
                 <div class="content-top">
                     <h2>请 Ctrl+D 收藏本页到浏览器收藏夹</h2>
                     <ul id="site-ul">
-<!--                        <li>-->
-<!--                            EasyGPT-轻松使用GPT 可绘画-->
-<!--                            <a href="https://chat2.fastgpt.me" target="_blank"><i>https://chat2.fastgpt.me</i></a>-->
-<!--                            </span></span></li>-->
-<!--                        <li>-->
-<!--                            quivr-你的第二大脑 基于文档对话-->
-<!--                            <a href="https://quivr.eqing.tech" target="_blank"><i>https://quivr.eqing.tech</i></a>-->
-<!--                            </span></span></li>-->
+                        <!--                        <li>-->
+                        <!--                            EasyGPT-轻松使用GPT 可绘画-->
+                        <!--                            <a href="https://chat2.fastgpt.me" target="_blank"><i>https://chat2.fastgpt.me</i></a>-->
+                        <!--                            </span></span></li>-->
+                        <!--                        <li>-->
+                        <!--                            quivr-你的第二大脑 基于文档对话-->
+                        <!--                            <a href="https://quivr.eqing.tech" target="_blank"><i>https://quivr.eqing.tech</i></a>-->
+                        <!--                            </span></span></li>-->
                     </ul>
-                    <h4 style="color: black"><a target="_blank" href="https://wwvf.lanzoue.com/b013pmlzi">windows,android客户端下载</a> 密码:cbjy</h4>
-                    <h4 style="color: black" >根据<a target="_blank" href="http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm">&lt;生成式人工智能服务管理暂行办法&gt;</a>,站点不再向境内用户提供生成式人工智能服务,境内用户请自行设置api接口使用静态站点 eg.(https://api.eqing.tech/api/openai)</h4>
-                    <h4 style="color: black" >如链接无法访问,请自行尝试其他网络环境</h4>
+                    <h4 style="color: black"><a target="_blank" href="https://wwvf.lanzoue.com/b013pmlzi">windows,android客户端下载</a>
+                        密码:cbjy</h4>
+                    <h4 style="color: black">根据<a target="_blank"
+                                                    href="http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm">&lt;生成式人工智能服务管理暂行办法&gt;</a>,站点不再向境内用户提供生成式人工智能服务,境内用户请自行设置api接口使用静态站点
+                        eg.(https://api.eqing.tech/api/openai)</h4>
+                    <h4 style="color: black">如链接无法访问,请自行尝试其他网络环境</h4>
                 </div>
             </div>
-<!--                        <p class="footer">www.easygpt.work. All Rights Reserved</p>-->
+            <!--                        <p class="footer">www.easygpt.work. All Rights Reserved</p>-->
         </div>
         <ul class="bg-bubbles">
             <li></li>
@@ -575,39 +578,43 @@
         return result;
     }
 
+    const config = encodeURI(JSON.stringify({
+        "url": "https://i.easygpt.work/api/openai",
+        "endpoint": "https://i.eqing.tech/api/openai"
+    }))
     const sites = [
         {
             id: 0,
             title: "EasyGPT (vercel部署,非中国地区可用,github google登录请使用此地址)",
-            url: "https://chat.eqing.tech/#/login"
+            url: `https://chat.eqing.tech/#/login`
         },
         {
             id: 1,
             title: "EasyGPT (搬瓦工美国-CN2高端线路)",
-            url: "https://chat-us.eqing.tech/#/login"
+            url: `https://chat-us.eqing.tech/#/`
         },
         {
             id: 4,
             title: "EasyGPT (静态页面,无后台无内置接口,境内服务器,设置接入点可稳定使用)",
-            url: "https://vip.easychat.work"
+            url: `https://vip.easychat.work/#/?settings=${config}`
         },
         {
             id: 1,
             title: "EasyGPT (zeabur部署-GCP台湾节点)",
-            url: "https://origin.eqing.tech/#/login"
+            url: `https://origin.eqing.tech/#/`
         },
         {
             id: 1,
             title: "EasyGPT (railway部署-GCP新加坡节点)",
-            url: "https://chat-railway.eqing.tech/"
+            url: `https://chat-railway.eqing.tech/#/`
         },
         {
             id: 2,
             title: "EasyGPT (亚洲cdn加速, cdn流量不足, 已指向美国CN2线路)",
-            url: "https://chat3.eqing.tech/"
+            url: `https://chat3.eqing.tech/`
         },
         {
-            id:99,
+            id: 99,
             title: "EasyGPT (非中国地区可用,随机网址,每次打开都不同,需要自己保存地址,不然聊天记录会丢失)",
             url: `https://${generateRandomString(10)}.fastgpt.me`
         },
