@@ -10,7 +10,7 @@
     <link rel="favicon" href="favicon.ico">
     <title>EasyGPT地址发布页</title>
     <meta name="keywords"
-          content="EasyGPT发布页,EasyGPT最新地址,EasyGPT网址多少;EasyChat发布页,EasyChat最新地址,EasyChat网址多少"/>
+          content="EasyGPT发布页,EasyGPT最新地址,EasyGPT网址多少;EasyChat发布页,EasyChat最新地址,EasyChat网址多少,免费GPT,免费GTP"/>
     <meta name="description"
           content="EasyGPT网址发布页,EasyGPT最新地址,EasyGPT网址多少;EasyChat发布页,EasyChat最新地址,EasyChat网址多少"/>
     <style>@font-face {
@@ -564,7 +564,7 @@
 <script>
 
     function generateRandomString(length) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
         let result = '';
 
         for (let i = 0; i < length; i++) {
@@ -576,23 +576,28 @@
     }
 
     const config = encodeURI(JSON.stringify({
-        "endpoint": "https://api.nextway.top/api/openai"
+        "endpoint": "/api/openai"
     }))
     const sites = [
         {
-            id: 3,
+            id: 1,
             title: "EasyGPT (vercel部署)",
             url: `https://chat3.eqing.tech/#/login`
         },
         {
             id: 2,
-            title: "EasyGPT (cdn优化线路, 推荐使用, github google登录异常)",
+            title: "EasyGPT (优化线路, 推荐使用)",
             url: `https://origin.nextway.top`
         },
         {
-            id: 1,
+            id: 3,
             title: "EasyGPT (香港直连)",
             url: `https://origin.eqing.tech`
+        },
+        {
+            id: 4,
+            title: "EasyGPT",
+            url: `https://${generateRandomString(12)}.easychat.work`
         },
         {
             id: 5,
