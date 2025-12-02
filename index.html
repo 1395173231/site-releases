@@ -85,7 +85,7 @@
             overflow-x: hidden;
         }
 
-        /* 动态背景光斑（去掉暗红，改成蓝紫+青色系） */
+        /* 动态背景光斑（蓝紫+青色系） */
         .ambient-light {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -168,7 +168,7 @@
         /* Site Grid */
         .site-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
@@ -305,9 +305,38 @@
             border: 1px solid var(--card-border);
         }
 
+        .download-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .download-toggle-btn {
+            border: none;
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--primary);
+            font-size: 0.8rem;
+            border-radius: 999px;
+            padding: 6px 12px;
+            display: none; /* 默认桌面不显示 */
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .download-toggle-btn i {
+            font-size: 0.7rem;
+        }
+
+        .download-body {
+            margin-top: 10px;
+        }
+
         .os-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* 减少最小宽度 */
             gap: 20px;
             margin-top: 20px;
         }
@@ -403,6 +432,31 @@
             .logo { font-size: 2.5rem; }
             .main-card { padding: 25px; }
             .site-grid { grid-template-columns: 1fr; }
+
+            /* 移动端：显示折叠按钮，默认收起下载区 */
+            .download-toggle-btn {
+                display: inline-flex;
+            }
+            .download-section.collapsed .download-body {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* 极小屏，强制单列，避免 os-card 溢出 */
+            .os-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            /* 桌面端始终展开下载列表，隐藏折叠按钮 */
+            .download-toggle-btn {
+                display: none !important;
+            }
+            .download-body {
+                display: block !important;
+            }
         }
     </style>
 
@@ -468,23 +522,31 @@
         </div>
 
         <!-- 3. 客户端下载 -->
-        <div class="download-section">
-            <div class="section-title" style="margin-bottom: 10px;">
-                <i class="fas fa-download"></i> 客户端下载
-            </div>
-            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 20px;">
-                推荐使用客户端，内置防屏蔽机制，体验更稳定。
-            </p>
-
-            <div id="download-container" class="os-grid">
-                <div style="display: flex; align-items: center; gap: 10px; color: var(--text-sub);">
-                    <div class="spinner"></div> 获取最新版本中...
+        <div class="download-section" id="download-section">
+            <div class="download-header-row">
+                <div class="section-title" style="margin-bottom: 0;">
+                    <i class="fas fa-download"></i> 客户端下载
                 </div>
+                <button id="download-toggle-btn" class="download-toggle-btn" type="button" aria-expanded="true">
+                    收起客户端下载 <i class="fas fa-chevron-up"></i>
+                </button>
             </div>
 
-            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: var(--text-sub); text-align: center;">
-                <i class="fas fa-info-circle"></i> 如无法自动获取，请访问
-                <a href="https://github.com/1395173231/easychat-release/releases/latest" target="_blank" style="color: var(--primary);">GitHub Release</a> 页面手动下载。
+            <div class="download-body" id="download-body">
+                <p style="color: var(--text-sub); font-size: 0.9rem; margin: 10px 0 20px;">
+                    推荐使用客户端，内置防屏蔽机制，体验更稳定。
+                </p>
+
+                <div id="download-container" class="os-grid">
+                    <div style="display: flex; align-items: center; gap: 10px; color: var(--text-sub);">
+                        <div class="spinner"></div> 获取最新版本中...
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: var(--text-sub); text-align: center;">
+                    <i class="fas fa-info-circle"></i> 如无法自动获取，请访问
+                    <a href="https://github.com/1395173231/easychat-release/releases/latest" target="_blank" style="color: var(--primary);">GitHub Release</a> 页面手动下载。
+                </div>
             </div>
         </div>
 
@@ -621,6 +683,27 @@
                 mq.addListener(e => applyUptimeTheme(e.matches));
             }
         }
+
+        // 下载折叠：移动端默认收起
+        const dlSection = document.getElementById('download-section');
+        const dlToggle = document.getElementById('download-toggle-btn');
+
+        if (window.innerWidth <= 768) {
+            dlSection.classList.add('collapsed');
+            dlToggle.setAttribute('aria-expanded', 'false');
+            dlToggle.innerHTML = '展开客户端下载 <i class="fas fa-chevron-down"></i>';
+        }
+
+        dlToggle.addEventListener('click', () => {
+            const collapsed = dlSection.classList.toggle('collapsed');
+            if (collapsed) {
+                dlToggle.setAttribute('aria-expanded', 'false');
+                dlToggle.innerHTML = '展开客户端下载 <i class="fas fa-chevron-down"></i>';
+            } else {
+                dlToggle.setAttribute('aria-expanded', 'true');
+                dlToggle.innerHTML = '收起客户端下载 <i class="fas fa-chevron-up"></i>';
+            }
+        });
 
         // 渲染站点列表 + 延迟检测
         const sites = [
