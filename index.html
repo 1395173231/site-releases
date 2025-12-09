@@ -621,7 +621,7 @@
             const data = await res.json();
 
             const assets = { win: [], mac: [], linux: [] };
-            data.assets.forEach(a => {
+            data.assets.filter((a)=>!a.name.toLowerCase().includes(".sig")).forEach(a => {
                 const n = a.name.toLowerCase();
                 if (n.includes('.exe')) assets.win.push(a);
                 else if (n.includes('.dmg')) assets.mac.push(a);
